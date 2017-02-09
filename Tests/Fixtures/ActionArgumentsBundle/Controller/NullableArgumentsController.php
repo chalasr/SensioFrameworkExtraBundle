@@ -44,4 +44,12 @@ class NullableArgumentsController
     {
         return new Response(null === $d ? 'yes' : 'no');
     }
+
+    /**
+     * @Route("/with-default-followed-by-mandatory")
+     */
+    public function withDefaultFollowedByMandatory($d = null, $e)
+    {
+        return new Response(null === $d ? 'yes' : 'no');
+    }
 }

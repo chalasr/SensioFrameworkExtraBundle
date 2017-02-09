@@ -30,4 +30,12 @@ class NullableAnnotationTest extends WebTestCase
 
         $this->assertSame('yes', $crawler->text());
     }
+
+    public function testArgumentWithDefaultFollowedByMandatoryIsOptional()
+    {
+        $client = self::createClient();
+        $crawler = $client->request('GET', '/nullable-arguments/with-default-followed-by-mandatory');
+
+        $this->assertSame('yes', $crawler->text());
+    }
 }
