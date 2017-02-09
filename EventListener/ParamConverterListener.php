@@ -102,7 +102,7 @@ class ParamConverterListener implements EventSubscriberInterface
                 $configurations[$name]->setClass($param->getClass()->getName());
             }
 
-            $configurations[$name]->setIsOptional($param->isOptional() || $this->isParameterTypeSupported && $param->hasType() && $param->getType()->allowsNull());
+            $configurations[$name]->setIsOptional($param->isOptional() || ($this->isParameterTypeSupported && $param->hasType() && $param->getType()->allowsNull()) || ($param->isDefaultValueAvailable() && null === $param->getDefaultValue()));
         }
 
         return $configurations;
